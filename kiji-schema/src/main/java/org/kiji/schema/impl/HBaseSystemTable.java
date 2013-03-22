@@ -43,6 +43,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.KijiSystemTable;
 import org.kiji.schema.KijiURI;
 import org.kiji.schema.avro.SystemTableBackup;
@@ -62,6 +63,7 @@ import org.kiji.schema.util.ResourceUtils;
  * and the value V is stored in the "value:" column.<p>import org.kiji.schema.KijiURI;
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public class HBaseSystemTable implements KijiSystemTable {
   private static final Logger LOG = LoggerFactory.getLogger(HBaseSystemTable.class);
   private static final Logger CLEANUP_LOG =

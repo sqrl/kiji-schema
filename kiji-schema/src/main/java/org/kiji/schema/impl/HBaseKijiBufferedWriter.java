@@ -40,6 +40,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.annotations.Inheritance;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.KijiBufferedWriter;
@@ -59,7 +60,8 @@ import org.kiji.schema.util.ResourceUtils;
  * performance.  Buffer is stored locally and the underlying HTableInterface buffer is ignored.
  * Default buffer size is 2,000,000 bytes.
  */
-@ApiAudience.Public
+@ApiAudience.Private
+@ApiStability.Unstable
 @Inheritance.Sealed
 public class HBaseKijiBufferedWriter implements KijiBufferedWriter {
   private static final Logger LOG = LoggerFactory.getLogger(HBaseKijiBufferedWriter.class);

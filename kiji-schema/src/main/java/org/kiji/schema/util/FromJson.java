@@ -45,11 +45,13 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.node.ObjectNode;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /**
  * Decode a JSON string into an Avro record.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class FromJson {
 
   /** Utility class cannot be instantiated. */

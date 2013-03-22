@@ -24,11 +24,13 @@ import java.io.IOException;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.DecodedCell;
 import org.kiji.schema.KijiCellEncoder;
 
 /** Encoder for Kiji counters. */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class CounterCellEncoder implements KijiCellEncoder {
   /** Singleton instance. */
   private static final CounterCellEncoder SINGLETON = new CounterCellEncoder();

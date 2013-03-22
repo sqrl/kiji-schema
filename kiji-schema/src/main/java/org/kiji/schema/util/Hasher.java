@@ -24,11 +24,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /**
  * A thread-safe utility for computing hashes of strings.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class Hasher {
   /** The number of bytes in a hash. */
   public static final int HASH_SIZE_BYTES = 16;

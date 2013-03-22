@@ -23,10 +23,10 @@ import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.hbase.KijiManagedHBaseTableName;
 import org.kiji.schema.layout.KijiTableLayout;
 import org.kiji.schema.layout.KijiTableLayout.LocalityGroupLayout;
-
 
 /**
  * Translates between KijiTableLayouts and HTableDescriptors.
@@ -36,6 +36,7 @@ import org.kiji.schema.layout.KijiTableLayout.LocalityGroupLayout;
  * schema components, which ultimately determines how we map Kiji data onto an HTable.</p>
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class HTableSchemaTranslator {
   /**
    * Creates a new <code>HTableSchemaTranslator</code> instance.

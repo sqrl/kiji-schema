@@ -33,6 +33,7 @@ import org.apache.avro.io.EncoderFactory;
 import org.apache.avro.specific.SpecificDatumWriter;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.DecodedCell;
 import org.kiji.schema.KijiCellEncoder;
 import org.kiji.schema.KijiEncodingException;
@@ -47,6 +48,7 @@ import org.kiji.schema.util.ByteStreamArray;
  * in a specific way for efficiency.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class AvroCellEncoder implements KijiCellEncoder {
 
   /** Specification of the cells to encode. */

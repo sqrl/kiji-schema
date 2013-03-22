@@ -26,6 +26,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.delegation.Priority;
 import org.kiji.schema.Kiji;
 import org.kiji.schema.KijiFactory;
@@ -34,6 +35,7 @@ import org.kiji.schema.hbase.HBaseFactory;
 
 /** Factory for constructing instances of HBaseKiji. */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class HBaseKijiFactory implements KijiFactory {
   /** {@inheritDoc} */
   @Override

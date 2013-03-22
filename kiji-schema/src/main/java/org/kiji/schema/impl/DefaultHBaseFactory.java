@@ -25,6 +25,7 @@ import java.util.Map;
 import org.apache.hadoop.conf.Configuration;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.delegation.Priority;
 import org.kiji.schema.KijiURI;
 import org.kiji.schema.hbase.HBaseFactory;
@@ -33,6 +34,7 @@ import org.kiji.schema.util.ZooKeeperLockFactory;
 
 /** Factory for HBase instances based on URIs. */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class DefaultHBaseFactory implements HBaseFactory {
 
   /**

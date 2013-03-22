@@ -25,6 +25,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.client.HTableInterface;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /**
  * Factory for HTableInterface instances.
@@ -32,6 +33,7 @@ import org.kiji.annotations.ApiAudience;
  * This interface exists because the HBase HTableInstanceFactory doesn't throw IOException.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public interface HTableInterfaceFactory {
   /**
    * Creates a new HTableInterface instance.

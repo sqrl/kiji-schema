@@ -39,6 +39,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.DecodedCell;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.KijiCell;
@@ -58,6 +59,7 @@ import org.kiji.schema.util.ResourceUtils;
  * Makes modifications to a Kiji table by sending requests directly to HBase from the local client.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class HBaseKijiTableWriter implements KijiTableWriter {
   private static final Logger LOG = LoggerFactory.getLogger(HBaseKijiTableWriter.class);
 

@@ -27,6 +27,7 @@ import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.hadoop.hbase.filter.FilterList;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.KijiDataRequest;
 
 /**
@@ -36,6 +37,7 @@ import org.kiji.schema.KijiDataRequest;
  * or {@link OrRowFilter}.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 class OperatorRowFilter extends KijiRowFilter {
   /** The operator to use on the filter operands. */
   private final Operator mOperator;

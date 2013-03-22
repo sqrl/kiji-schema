@@ -40,9 +40,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /** Distributed lock on top of ZooKeeper. */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class ZooKeeperLock implements Lock, Closeable {
   private static final Logger LOG = LoggerFactory.getLogger(ZooKeeperLock.class);
   private static final byte[] EMPTY = new byte[0];

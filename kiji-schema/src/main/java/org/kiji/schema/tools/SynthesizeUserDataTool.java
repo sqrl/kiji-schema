@@ -26,6 +26,7 @@ import java.util.Random;
 import com.google.common.base.Preconditions;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.common.flags.Flag;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.Kiji;
@@ -42,6 +43,7 @@ import org.kiji.schema.util.ResourceUtils;
  * Synthesize some user data into a kiji table.
  */
 @ApiAudience.Private
+@ApiStability.Evolving
 public final class SynthesizeUserDataTool extends BaseTool {
   @Flag(name="name-dict", usage="File that contains people names, one per line")
   private String mNameDictionaryFilename = "org/kiji/schema/tools/synth/top_names.txt";

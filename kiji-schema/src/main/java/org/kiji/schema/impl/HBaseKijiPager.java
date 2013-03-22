@@ -27,8 +27,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.KijiColumnName;
+import org.kiji.schema.KijiColumnPagingNotEnabledException;
 import org.kiji.schema.KijiDataRequest;
 import org.kiji.schema.KijiDataRequestBuilder;
 import org.kiji.schema.KijiIOException;
@@ -42,6 +44,7 @@ import org.kiji.schema.util.ResourceUtils;
  * <p>Implementation of a KijiPager for HBase.</p>
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class HBaseKijiPager implements KijiPager {
   private static final Logger LOG = LoggerFactory.getLogger(HBaseKijiPager.class);
   /** The entity id for the row. */

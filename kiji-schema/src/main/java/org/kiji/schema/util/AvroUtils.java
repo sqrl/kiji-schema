@@ -25,11 +25,13 @@ import com.google.common.base.Preconditions;
 import org.apache.avro.Schema;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /**
  * General purpose Avro utilities.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class AvroUtils {
 
   /** Utility class cannot be instantiated. */

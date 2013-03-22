@@ -26,9 +26,11 @@ import org.apache.hadoop.hbase.client.HTable;
 import org.apache.hadoop.hbase.client.HTableInterface;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /** Factory for HTableInterface that creates concrete HTable instances. */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class DefaultHTableInterfaceFactory implements HTableInterfaceFactory {
   /** Singleton. */
   private static final HTableInterfaceFactory DEFAULT = new DefaultHTableInterfaceFactory();

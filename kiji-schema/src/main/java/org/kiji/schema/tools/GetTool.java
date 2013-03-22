@@ -30,6 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.common.flags.Flag;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.Kiji;
@@ -42,7 +43,6 @@ import org.kiji.schema.layout.KijiTableLayout;
 import org.kiji.schema.layout.KijiTableLayout.LocalityGroupLayout.FamilyLayout;
 import org.kiji.schema.layout.KijiTableLayout.LocalityGroupLayout.FamilyLayout.ColumnLayout;
 
-
 /**
  * Command-line tool to get one specific row from a kiji table.
  *
@@ -54,6 +54,7 @@ import org.kiji.schema.layout.KijiTableLayout.LocalityGroupLayout.FamilyLayout.C
  * </pre>
  */
 @ApiAudience.Private
+@ApiStability.Evolving
 public final class GetTool extends BaseTool {
   private static final Logger LOG = LoggerFactory.getLogger(GetTool.class);
 

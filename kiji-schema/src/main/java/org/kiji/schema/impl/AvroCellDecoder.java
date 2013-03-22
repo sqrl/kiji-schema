@@ -28,6 +28,7 @@ import org.apache.avro.io.DatumReader;
 import org.apache.avro.io.DecoderFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.DecodedCell;
 import org.kiji.schema.KijiCellDecoder;
 import org.kiji.schema.KijiSchemaTable;
@@ -45,6 +46,7 @@ import org.kiji.schema.util.Hasher;
  * @param <T> The type of the decoded cell data.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public abstract class AvroCellDecoder<T> implements KijiCellDecoder<T> {
 
   /** Specification of the cell encoding. */

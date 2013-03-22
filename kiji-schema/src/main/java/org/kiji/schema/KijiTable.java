@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.annotations.Inheritance;
 import org.kiji.schema.layout.KijiTableLayout;
 import org.kiji.schema.util.ReferenceCountable;
@@ -85,6 +86,7 @@ import org.kiji.schema.util.ReferenceCountable;
  * @see Kiji for more information about opening a KijiTable instance.
  */
 @ApiAudience.Public
+@ApiStability.Stable
 @Inheritance.Sealed
 public interface KijiTable extends ReferenceCountable<KijiTable>, Closeable {
   /** @return the Kiji instance this table belongs to. */

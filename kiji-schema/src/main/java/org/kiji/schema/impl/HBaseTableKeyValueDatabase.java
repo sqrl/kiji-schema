@@ -45,17 +45,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.KijiTableKeyValueDatabase;
 import org.kiji.schema.avro.KeyValueBackup;
 import org.kiji.schema.avro.KeyValueBackupEntry;
 import org.kiji.schema.util.ResourceUtils;
-
 
  /**
  * Manages key-value pairs on a per table basis. Storage of these key-value pairs is provided by
  * a column family of an HTable.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public class HBaseTableKeyValueDatabase
     implements KijiTableKeyValueDatabase<HBaseTableKeyValueDatabase> {
 

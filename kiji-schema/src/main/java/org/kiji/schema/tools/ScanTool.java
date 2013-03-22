@@ -30,6 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.common.flags.Flag;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.Kiji;
@@ -65,6 +66,7 @@ import org.kiji.schema.util.ResourceUtils;
  * </pre>
  */
 @ApiAudience.Private
+@ApiStability.Evolving
 public final class ScanTool extends BaseTool {
   private static final Logger LOG = LoggerFactory.getLogger(ScanTool.class);
 

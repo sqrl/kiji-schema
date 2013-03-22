@@ -62,6 +62,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.KijiSchemaTable;
 import org.kiji.schema.KijiURI;
 import org.kiji.schema.avro.MD5Hash;
@@ -93,6 +94,7 @@ import org.kiji.schema.util.ResourceUtils;
  * </p>
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public class HBaseSchemaTable implements KijiSchemaTable {
   private static final Logger LOG = LoggerFactory.getLogger(HBaseSchemaTable.class);
   // private static final Logger CLEANUP_LOG =

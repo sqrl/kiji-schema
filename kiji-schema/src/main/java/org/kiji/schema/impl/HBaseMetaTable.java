@@ -36,6 +36,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.KijiMetaTable;
 import org.kiji.schema.KijiSchemaTable;
 import org.kiji.schema.KijiTableKeyValueDatabase;
@@ -55,6 +56,7 @@ import org.kiji.schema.layout.impl.HBaseTableLayoutDatabase;
  * store.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public class HBaseMetaTable implements KijiMetaTable {
 
   private static final Logger LOG = LoggerFactory.getLogger(HBaseMetaTable.class);

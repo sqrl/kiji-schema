@@ -38,6 +38,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.EntityIdFactory;
 import org.kiji.schema.InternalKijiError;
@@ -64,6 +65,7 @@ import org.kiji.schema.util.ResourceUtils;
  * have access to should be added to org.kiji.schema.KijiTable.</p>
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class HBaseKijiTable implements KijiTable {
   private static final Logger LOG = LoggerFactory.getLogger(HBaseKijiTable.class);
   private static final Logger CLEANUP_LOG =

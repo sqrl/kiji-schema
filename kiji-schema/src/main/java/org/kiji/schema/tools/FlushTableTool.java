@@ -31,6 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.common.flags.Flag;
 import org.kiji.schema.KConstants;
 import org.kiji.schema.KijiURI;
@@ -51,6 +52,7 @@ import org.kiji.schema.util.ResourceUtils;
  * </pre>
  */
 @ApiAudience.Private
+@ApiStability.Evolving
 public final class FlushTableTool extends BaseTool {
   private static final Logger LOG = LoggerFactory.getLogger(FlushTableTool.class.getName());
 

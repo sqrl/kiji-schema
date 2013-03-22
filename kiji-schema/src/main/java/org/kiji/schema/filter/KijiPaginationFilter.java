@@ -26,6 +26,7 @@ import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.hadoop.hbase.filter.FilterList;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.KijiColumnName;
 
 /**
@@ -33,6 +34,7 @@ import org.kiji.schema.KijiColumnName;
  * other filters that are and-ed together.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public class KijiPaginationFilter extends KijiColumnFilter {
   private static final long serialVersionUID = 1L;
 

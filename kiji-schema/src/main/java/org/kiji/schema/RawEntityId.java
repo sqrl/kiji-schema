@@ -27,9 +27,11 @@ import com.google.common.base.Preconditions;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /** Implements the raw row key format. */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class RawEntityId extends EntityId {
   /**
    * Creates a RawEntityId from the specified Kiji row key.

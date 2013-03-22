@@ -27,6 +27,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.common.flags.Flag;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.Kiji;
@@ -42,6 +43,7 @@ import org.kiji.schema.util.ResourceUtils;
  * Command-line tool to increment a counter in a cell of a kiji table.
  */
 @ApiAudience.Private
+@ApiStability.Evolving
 public final class IncrementTool extends BaseTool {
   private static final Logger LOG = LoggerFactory.getLogger(IncrementTool.class);
 

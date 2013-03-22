@@ -31,6 +31,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /**
  * Parses region boundaries split files.
@@ -46,6 +47,7 @@ import org.kiji.annotations.ApiAudience;
  * split key.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class SplitKeyFile {
   /** Utility class. */
   private SplitKeyFile() {

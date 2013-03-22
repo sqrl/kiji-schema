@@ -31,6 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.common.flags.Flag;
 import org.kiji.schema.Kiji;
 import org.kiji.schema.KijiURI;
@@ -38,11 +39,11 @@ import org.kiji.schema.avro.TableLayoutDesc;
 import org.kiji.schema.layout.KijiTableLayout;
 import org.kiji.schema.util.SplitKeyFile;
 
-
 /**
  * Command-line tool for creating kiji tables in kiji instances.
  */
 @ApiAudience.Private
+@ApiStability.Evolving
 public final class CreateTableTool extends BaseTool {
   private static final Logger LOG = LoggerFactory.getLogger(CreateTableTool.class);
 

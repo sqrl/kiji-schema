@@ -23,11 +23,13 @@ import java.util.List;
 import java.util.Random;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /**
  * Synthesizes a random email address.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class EmailSynthesizer implements Synthesizer<String> {
   /** A random number generator. */
   private Random mRandom;

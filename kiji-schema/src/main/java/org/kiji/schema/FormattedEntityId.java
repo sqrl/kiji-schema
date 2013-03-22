@@ -39,6 +39,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.avro.ComponentType;
 import org.kiji.schema.avro.RowKeyEncoding;
 import org.kiji.schema.avro.RowKeyFormat2;
@@ -116,6 +117,7 @@ import org.kiji.schema.util.Hasher;
  * </code>
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 final class FormattedEntityId extends EntityId {
   // HBase row key bytes. The encoded components of the row key
   // potentially including a hash prefix, as specified in the row key format.

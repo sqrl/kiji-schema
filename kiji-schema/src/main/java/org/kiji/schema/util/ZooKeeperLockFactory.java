@@ -33,10 +33,12 @@ import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.KijiURI;
 
 /** Factory for ZooKeeperLock instances. */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class ZooKeeperLockFactory implements LockFactory {
   /** ZooKeeper watcher that simply discards events. */
   private static class ZooKeeperNoopWatcher implements Watcher {

@@ -22,9 +22,11 @@ package org.kiji.schema.util;
 import java.io.IOException;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /** Utility class to format byte arrays. */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class ByteArrayFormatter {
   /** Utility class cannot be instantiated. */
   private ByteArrayFormatter() {

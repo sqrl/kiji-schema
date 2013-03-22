@@ -28,6 +28,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.KijiColumnName;
 import org.kiji.schema.NoSuchColumnException;
 import org.kiji.schema.hbase.HBaseColumnName;
@@ -43,6 +44,7 @@ import org.kiji.schema.layout.KijiTableLayout.LocalityGroupLayout.FamilyLayout.C
  * Kiji table family/qualifiers.</p>
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class ColumnNameTranslator {
   private static final Logger LOG = LoggerFactory.getLogger(ColumnNameTranslator.class);
 

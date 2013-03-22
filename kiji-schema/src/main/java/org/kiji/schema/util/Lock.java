@@ -23,10 +23,12 @@ import java.io.Closeable;
 import java.io.IOException;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.annotations.Inheritance;
 
 /** Lock interface. */
 @ApiAudience.Private
+@ApiStability.Unstable
 @Inheritance.Sealed
 public interface Lock extends Closeable {
 

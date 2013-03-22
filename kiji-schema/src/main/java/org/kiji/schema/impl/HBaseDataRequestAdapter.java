@@ -38,6 +38,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.HBaseEntityId;
 import org.kiji.schema.KijiColumnName;
@@ -49,13 +50,13 @@ import org.kiji.schema.hbase.HBaseScanOptions;
 import org.kiji.schema.layout.KijiTableLayout;
 import org.kiji.schema.layout.impl.ColumnNameTranslator;
 
-
 /**
  * Wraps a KijiDataRequest to expose methods that generate meaningful objects in HBase
  * land, like {@link org.apache.hadoop.hbase.client.Put}s and {@link
  * org.apache.hadoop.hbase.client.Get}s.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public class HBaseDataRequestAdapter {
   private static final Logger LOG = LoggerFactory.getLogger(HBaseDataRequestAdapter.class);
 

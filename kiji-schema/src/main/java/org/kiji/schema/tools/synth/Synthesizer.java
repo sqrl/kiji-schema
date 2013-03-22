@@ -20,6 +20,7 @@
 package org.kiji.schema.tools.synth;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.annotations.Inheritance;
 
 /**
@@ -28,6 +29,7 @@ import org.kiji.annotations.Inheritance;
  * @param <T> The type of data to be synthesized.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 @Inheritance.Sealed
 public interface Synthesizer<T> {
   /**

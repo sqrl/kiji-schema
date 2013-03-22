@@ -29,6 +29,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.EntityIdFactory;
 import org.kiji.schema.KijiDataRequest;
@@ -38,11 +39,11 @@ import org.kiji.schema.KijiRowScanner;
 import org.kiji.schema.util.Debug;
 import org.kiji.schema.util.ResourceUtils;
 
-
 /**
  * The internal implementation of KijiRowScanner that reads from HTables.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public class HBaseKijiRowScanner implements KijiRowScanner {
   private static final Logger LOG = LoggerFactory.getLogger(HBaseKijiRowScanner.class);
   private static final Logger CLEANUP_LOG =

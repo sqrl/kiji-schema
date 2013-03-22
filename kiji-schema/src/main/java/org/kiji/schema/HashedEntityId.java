@@ -27,6 +27,7 @@ import com.google.common.base.Preconditions;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.avro.RowKeyEncoding;
 import org.kiji.schema.avro.RowKeyFormat;
 import org.kiji.schema.util.ByteArrayFormatter;
@@ -34,6 +35,7 @@ import org.kiji.schema.util.Hasher;
 
 /** Implements the hashed row key format. */
 @ApiAudience.Private
+@ApiStability.Unstable
 final class HashedEntityId extends EntityId {
   /** Kiji row key bytes. May be null if we only know the HBase row key. */
   private final byte[] mKijiRowKey;

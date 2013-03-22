@@ -26,7 +26,12 @@ import org.apache.hadoop.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
+
 /** Utilities to work with ReferenceCountable resources. */
+@ApiAudience.Framework
+@ApiStability.Evolving
 public final class ResourceUtils {
   private static final Logger LOG = LoggerFactory.getLogger(ResourceUtils.class);
 

@@ -30,11 +30,13 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /**
  * Loads a dictionary file, which is simply a list of words, one per line.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class DictionaryLoader {
   /**
    * Creates a new <code>DictionaryLoader</code> instance.

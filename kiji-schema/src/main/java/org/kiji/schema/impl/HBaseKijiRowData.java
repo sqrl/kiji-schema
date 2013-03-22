@@ -39,12 +39,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.EntityIdFactory;
 import org.kiji.schema.KijiCell;
 import org.kiji.schema.KijiCellDecoder;
 import org.kiji.schema.KijiCellDecoderFactory;
 import org.kiji.schema.KijiColumnName;
+import org.kiji.schema.KijiColumnPagingNotEnabledException;
 import org.kiji.schema.KijiDataRequest;
 import org.kiji.schema.KijiPager;
 import org.kiji.schema.KijiRowData;
@@ -61,6 +63,7 @@ import org.kiji.schema.util.TimestampComparator;
  * An implementation of KijiRowData that wraps an HBase Result object.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class HBaseKijiRowData implements KijiRowData {
   private static final Logger LOG = LoggerFactory.getLogger(HBaseKijiRowData.class);
 

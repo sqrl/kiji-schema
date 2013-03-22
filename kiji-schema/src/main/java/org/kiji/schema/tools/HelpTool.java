@@ -29,6 +29,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.hadoop.conf.Configured;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.common.flags.Flag;
 import org.kiji.common.flags.FlagParser;
 import org.kiji.delegation.Lookups;
@@ -39,6 +40,7 @@ import org.kiji.schema.util.Resources;
  * Command-line tool for displaying help on available tools.
  */
 @ApiAudience.Private
+@ApiStability.Evolving
 public final class HelpTool extends Configured implements KijiTool {
 
   /** Maximum padding width for the name column in the help display. */

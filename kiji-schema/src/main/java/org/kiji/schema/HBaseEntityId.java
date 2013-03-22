@@ -27,6 +27,7 @@ import com.google.common.base.Preconditions;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.util.ByteArrayFormatter;
 
 /**
@@ -34,6 +35,7 @@ import org.kiji.schema.util.ByteArrayFormatter;
  * represents a byte[] containing an hbase row key.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class HBaseEntityId extends EntityId {
   private byte[] mHBaseRowKey;
 

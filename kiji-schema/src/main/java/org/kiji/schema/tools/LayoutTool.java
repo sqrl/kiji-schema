@@ -32,6 +32,7 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.common.flags.Flag;
 import org.kiji.schema.Kiji;
 import org.kiji.schema.KijiURI;
@@ -62,6 +63,7 @@ import org.kiji.schema.util.ToJson;
  * </pre>
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class LayoutTool extends BaseTool {
   @Flag(name="do", usage="Action to perform: dump, set, or history.")
   private String mDo = "dump";

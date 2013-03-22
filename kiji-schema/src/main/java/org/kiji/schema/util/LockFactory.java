@@ -22,10 +22,12 @@ package org.kiji.schema.util;
 import java.io.IOException;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.annotations.Inheritance;
 
 /** Factory for Lock instances. */
 @ApiAudience.Private
+@ApiStability.Unstable
 @Inheritance.Sealed
 public interface LockFactory {
 

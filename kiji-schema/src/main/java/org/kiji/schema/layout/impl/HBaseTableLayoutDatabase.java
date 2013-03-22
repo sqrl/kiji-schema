@@ -43,6 +43,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.KijiCellDecoder;
 import org.kiji.schema.KijiCellEncoder;
 import org.kiji.schema.KijiSchemaTable;
@@ -59,7 +60,6 @@ import org.kiji.schema.layout.CellSpec;
 import org.kiji.schema.layout.KijiTableLayout;
 import org.kiji.schema.layout.KijiTableLayoutDatabase;
 import org.kiji.schema.util.ResourceUtils;
-
 
 /**
  * <p>Manages Kiji table layouts using a column family in an HBase table as a backing store.</p>
@@ -80,6 +80,7 @@ import org.kiji.schema.util.ResourceUtils;
  * HColumn that should be used to construct the HTable for the backing store.</p>
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class HBaseTableLayoutDatabase implements KijiTableLayoutDatabase {
   private static final Logger LOG = LoggerFactory.getLogger(HBaseTableLayoutDatabase.class);
 

@@ -26,6 +26,7 @@ import com.google.common.base.Preconditions;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.InternalKijiError;
 import org.kiji.schema.impl.InvalidColumnNameException;
 
@@ -65,6 +66,7 @@ import org.kiji.schema.impl.InvalidColumnNameException;
  * only be two bytes, and so on.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class ColumnId {
   /**
    * The special value reserved to mean that a symbolic name has not been assigned a column id.

@@ -31,6 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.InternalKijiError;
 import org.kiji.schema.KijiDataRequest;
@@ -49,6 +50,7 @@ import org.kiji.schema.util.ResourceUtils;
  * Reads from a kiji table by sending the requests directly to the HBase tables.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public class HBaseKijiTableReader implements KijiTableReader {
   private static final Logger LOG = LoggerFactory.getLogger(HBaseKijiTableReader.class);
 

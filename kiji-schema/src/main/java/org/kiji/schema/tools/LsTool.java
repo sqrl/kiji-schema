@@ -35,6 +35,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.KConstants;
 import org.kiji.schema.Kiji;
 import org.kiji.schema.KijiColumnName;
@@ -71,6 +72,7 @@ import org.kiji.schema.util.ResourceUtils;
  *
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class LsTool extends BaseTool {
   private static final Logger LOG = LoggerFactory.getLogger(LsTool.class);
 

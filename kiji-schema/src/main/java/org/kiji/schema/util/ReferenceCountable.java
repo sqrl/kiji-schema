@@ -21,11 +21,18 @@ package org.kiji.schema.util;
 
 import java.io.IOException;
 
+import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
+import org.kiji.annotations.Inheritance;
+
 /**
  * Interface for reference-countable resources.
  *
  * @param <T> Type of the resource.
  */
+@ApiAudience.Public
+@ApiStability.Stable
+@Inheritance.Sealed
 public interface ReferenceCountable<T> {
 
   /**

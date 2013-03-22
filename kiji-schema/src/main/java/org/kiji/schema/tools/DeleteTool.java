@@ -29,6 +29,7 @@ import org.apache.hadoop.hbase.HConstants;
 import org.apache.hadoop.hbase.thrift.generated.IllegalArgument;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.common.flags.Flag;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.Kiji;
@@ -63,6 +64,7 @@ import org.kiji.schema.util.ResourceUtils;
  * </pre>
  */
 @ApiAudience.Private
+@ApiStability.Evolving
 public final class DeleteTool extends BaseTool {
   @Flag(name="target", usage="URI of the element(s) to delete. Valid scopes are: "
       + "entire Kiji instance, entire Kiji table, entire family/column or set of families/columns.")

@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /**
  * Wraps a byte array of binary-encoded data into a byte stream.
@@ -31,6 +32,7 @@ import org.kiji.annotations.ApiAudience;
  * Heavily inspired from protocol buffer's CodedOutputStream and Avro's BinaryDecoder.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class ByteStreamArray {
   /** Raised when decoding some data fails (eg. a variable-length integer). */
   @ApiAudience.Private

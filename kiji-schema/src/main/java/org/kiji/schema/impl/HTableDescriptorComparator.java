@@ -25,6 +25,7 @@ import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.hbase.KijiManagedHBaseTableName;
 
 /**
@@ -33,6 +34,7 @@ import org.kiji.schema.hbase.KijiManagedHBaseTableName;
  * families.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public class HTableDescriptorComparator implements Comparator<HTableDescriptor> {
   @Override
   public int compare(HTableDescriptor o1, HTableDescriptor o2) {

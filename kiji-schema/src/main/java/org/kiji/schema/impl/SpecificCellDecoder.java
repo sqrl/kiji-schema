@@ -26,6 +26,7 @@ import org.apache.avro.io.DatumReader;
 import org.apache.avro.specific.SpecificDatumReader;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.layout.CellSpec;
 
 /**
@@ -34,6 +35,7 @@ import org.kiji.schema.layout.CellSpec;
  * @param <T> The type of the decoded data.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class SpecificCellDecoder<T> extends AvroCellDecoder<T> {
   /**
    * Initializes a cell decoder that creates specific Avro types.

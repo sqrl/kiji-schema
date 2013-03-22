@@ -37,6 +37,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.Kiji;
 import org.kiji.schema.KijiAlreadyExistsException;
 import org.kiji.schema.KijiMetaTable;
@@ -67,7 +68,8 @@ import org.kiji.schema.util.ZooKeeperLockFactory;
  * single HBase cluster.  This class represents a single one of those
  * instances.
  */
-@ApiAudience.Public
+@ApiAudience.Private
+@ApiStability.Unstable
 public final class HBaseKiji implements Kiji {
   private static final Logger LOG = LoggerFactory.getLogger(HBaseKiji.class);
   private static final Logger CLEANUP_LOG =

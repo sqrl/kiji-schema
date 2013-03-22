@@ -25,9 +25,11 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.client.HBaseAdmin;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /** Factory for HBaseAdmin that creates concrete HBaseAdmin instances. */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class DefaultHBaseAdminFactory implements HBaseAdminFactory {
   /** Singleton. */
   private static final HBaseAdminFactory DEFAULT = new DefaultHBaseAdminFactory();

@@ -31,6 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.common.flags.Flag;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.Kiji;
@@ -48,6 +49,7 @@ import org.kiji.schema.util.ResourceUtils;
  * must also specify an Avro schema (as a JSON string) when writing a value with this tool.
  */
 @ApiAudience.Private
+@ApiStability.Evolving
 public final class PutTool extends BaseTool {
   private static final Logger LOG = LoggerFactory.getLogger(PutTool.class.getName());
 

@@ -33,6 +33,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.AtomicKijiPutter;
 import org.kiji.schema.EntityId;
 import org.kiji.schema.KijiCellEncoder;
@@ -56,6 +57,7 @@ import org.kiji.schema.layout.impl.ColumnNameTranslator;
  * concurrent access to a writer while a transaction is being constructed.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class HBaseAtomicKijiPutter implements AtomicKijiPutter {
   private static final Logger LOG = LoggerFactory.getLogger(HBaseAtomicKijiPutter.class);
 

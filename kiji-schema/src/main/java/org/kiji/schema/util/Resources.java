@@ -28,11 +28,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /**
  * Utility for getting access to system resources.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class Resources {
   private static final Logger LOG = LoggerFactory.getLogger(Resources.class);
 

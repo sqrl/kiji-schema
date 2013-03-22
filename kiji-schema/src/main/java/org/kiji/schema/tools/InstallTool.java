@@ -26,6 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.common.flags.Flag;
 import org.kiji.schema.KConstants;
 import org.kiji.schema.KijiAlreadyExistsException;
@@ -36,6 +37,7 @@ import org.kiji.schema.KijiURI;
  * A command-line tool for installing kiji instances on hbase clusters.
  */
 @ApiAudience.Private
+@ApiStability.Evolving
 public final class InstallTool extends BaseTool {
   private static final Logger LOG = LoggerFactory.getLogger(InstallTool.class);
 

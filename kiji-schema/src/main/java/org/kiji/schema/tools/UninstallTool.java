@@ -25,6 +25,7 @@ import java.util.List;
 import com.google.common.base.Preconditions;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.common.flags.Flag;
 import org.kiji.schema.KConstants;
 import org.kiji.schema.KijiInstaller;
@@ -36,6 +37,7 @@ import org.kiji.schema.KijiURI;
  * A command-line tool for uninstalling kiji instances from an hbase cluster.
  */
 @ApiAudience.Private
+@ApiStability.Evolving
 public final class UninstallTool extends BaseTool {
 
   @Flag(name="kiji", usage="URI of the Kiji instance to uninstall.")

@@ -28,12 +28,14 @@ import org.apache.hadoop.hbase.HRegionInfo;
 import org.apache.hadoop.hbase.HRegionLocation;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.KijiRegion;
 
 /**
  * HBaseKijiRegion is the HBase-backed KijiRegion.
  */
 @ApiAudience.Private
+@ApiStability.Unstable
 final class HBaseKijiRegion implements KijiRegion {
   private final HRegionInfo mHRegionInfo;
   private final List<String> mRegionLocations;

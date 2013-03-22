@@ -22,9 +22,11 @@ package org.kiji.schema.util;
 import org.apache.hadoop.util.StringUtils;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 
 /** Debugging utilities. */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class Debug {
   /** @return a string representation of the current stack trace. */
   public static String getStackTrace() {

@@ -22,6 +22,7 @@ package org.kiji.schema.impl;
 import java.io.IOException;
 
 import org.kiji.annotations.ApiAudience;
+import org.kiji.annotations.ApiStability;
 import org.kiji.schema.AtomicKijiPutter;
 import org.kiji.schema.KijiBufferedWriter;
 import org.kiji.schema.KijiTableWriter;
@@ -29,6 +30,7 @@ import org.kiji.schema.KijiWriterFactory;
 
 /** Factory for Table Writers. */
 @ApiAudience.Private
+@ApiStability.Unstable
 public final class HBaseKijiWriterFactory implements KijiWriterFactory {
 
   /** HBaseKijiTable for this writer factory. */
