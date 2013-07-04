@@ -25,10 +25,10 @@ import org.kiji.annotations.ApiAudience;
 import org.kiji.delegation.Priority;
 
 /**
- * Factory for CDH4.2-specific SchemaPlatformBridge implementation.
+ * Factory for CDH4.3-specific SchemaPlatformBridge implementation.
  */
 @ApiAudience.Private
-public final class CDH42MR1SchemaBridgeFactory extends SchemaPlatformBridgeFactory {
+public final class CDH43MR1SchemaBridgeFactory extends SchemaPlatformBridgeFactory {
 
   /** {@inheritDoc} */
   @Override
@@ -37,7 +37,7 @@ public final class CDH42MR1SchemaBridgeFactory extends SchemaPlatformBridgeFacto
     try {
       Class<? extends SchemaPlatformBridge> bridgeClass =
           (Class<? extends SchemaPlatformBridge>) Class.forName(
-              "org.kiji.schema.platform.CDH42MR1SchemaBridge");
+              "org.kiji.schema.platform.CDH43MR1SchemaBridge");
       return bridgeClass.newInstance();
     } catch (Exception e) {
       throw new RuntimeException("Could not instantiate platform bridge", e);
@@ -50,9 +50,9 @@ public final class CDH42MR1SchemaBridgeFactory extends SchemaPlatformBridgeFacto
     String hadoopVer = org.apache.hadoop.util.VersionInfo.getVersion();
     String hbaseVer = org.apache.hadoop.hbase.util.VersionInfo.getVersion();
 
-    if (hadoopVer.matches("2\\..*-cdh4\\.2\\..*")
-        && hbaseVer.matches("0\\.94\\..-cdh4\\.2\\..*")) {
-      // Hadoop 2.x-cdh4.2.* and HBase 0.94.X-cdh4.2.* match correctly; use this bridge.
+    if (hadoopVer.matches("2\\..*-cdh4\\.3\\..*")
+        && hbaseVer.matches("0\\.94\\..-cdh4\\.3\\..*")) {
+      // Hadoop 2.x-cdh4.3.* and HBase 0.94.X-cdh4.3.* match correctly; use this bridge.
       return Priority.NORMAL;
     } else {
       // Can't provide for this implementation.

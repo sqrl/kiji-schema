@@ -36,7 +36,7 @@
 
   <properties>
     <kiji-delegation.version>1.0.0</kiji-delegation.version>
-    <kiji-platforms.version>1.1.0</kiji-platforms.version>
+    <kiji-platforms.version>1.1.1-SNAPSHOT</kiji-platforms.version>
     <fake-hbase.version>0.1.0</fake-hbase.version>
 
     <!--
@@ -57,6 +57,7 @@
     <module>platform-api</module>
     <module>cdh41mr1-bridge</module>
     <module>cdh42mr1-bridge</module>
+    <module>cdh43mr1-bridge</module>
     <module>hadoop1-hbase92-bridge</module>
     <module>hadoop1-hbase94-bridge</module>
 
