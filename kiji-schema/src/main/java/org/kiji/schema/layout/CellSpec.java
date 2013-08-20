@@ -217,7 +217,7 @@ public final class CellSpec {
    *
    * @param klass Avro generated class of the specific record to decode this column to.
    * @return this CellSpec.
-   * @throws InvalidLayoutException of the specified class is not a valid Avro specific record.
+   * @throws InvalidLayoutException if the specified class is not a valid Avro specific record.
    */
   public CellSpec setSpecificRecord(final Class<? extends SpecificRecord> klass)
       throws InvalidLayoutException {
