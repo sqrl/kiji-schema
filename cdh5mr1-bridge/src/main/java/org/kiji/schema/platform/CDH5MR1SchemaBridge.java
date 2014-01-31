@@ -26,55 +26,53 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.KeyValue;
-import org.apache.hadoop.hbase.client.HTable;
 import org.apache.hadoop.hbase.client.HTableInterface;
+import org.apache.hadoop.hbase.io.compress.Compression;
 import org.apache.hadoop.hbase.io.hfile.CacheConfig;
-import org.apache.hadoop.hbase.io.hfile.Compression;
 import org.apache.hadoop.hbase.io.hfile.HFile;
-import org.apache.hadoop.hbase.regionserver.StoreFile;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.hadoop.hbase.regionserver.BloomType;
+import org.apache.hadoop.hdfs.HdfsConfiguration;
+import org.apache.hadoop.mapred.JobConf;
 
 import org.kiji.annotations.ApiAudience;
 
 /**
- * Hadoop 1.x and HBase 0.92.x-backed implementation of the SchemaPlatformBridge API.
+ * CDH5-backed implementation of the SchemaPlatformBridge API.
  */
 @ApiAudience.Private
-public final class Hadoop1xHBase92SchemaBridge extends SchemaPlatformBridge {
-  private static final Logger LOG = LoggerFactory.getLogger(Hadoop1xHBase92SchemaBridge.class);
-
+public final class CDH5MR1SchemaBridge extends SchemaPlatformBridge {
   /** {@inheritDoc} */
   @Override
   public void initializeHadoopResources() {
-    // Do nothing: Configuration resources include hdfs/mapred-site/default.xml by default.
+    // Force initialization of HdfsConfiguration,
+    // to register hdfs-site.xml and hdfs-default.xml resources:
+    HdfsConfiguration.init();
+
+    // Force initialization of JobConf,
+    // to register mapred-site.xml and mapred-default.xml resources:
+    try {
+      // JobConf does not provide a static initialization method,
+      // use Class.forName() to trigger static initialization:
+      Class.forName(JobConf.class.getName());
+    } catch (ClassNotFoundException cnfe) {
+      throw new RuntimeException(
+          "Error initializing class JobConf to register mapred resources.", cnfe);
+    }
   }
 
   /** {@inheritDoc} */
   @Override
   public void setAutoFlush(HTableInterface hTable, boolean autoFlush) {
-    // The HTable implementation of HTableInterface can do this; downcast if available.
-    // setAutoFlush is not a member of HTableInterface in HBase 0.92.X
-    if (hTable instanceof HTable) {
-      ((HTable) hTable).setAutoFlush(autoFlush);
-    } else {
-      LOG.error("Cannot set autoFlush=" + autoFlush + " for HTableInterface impl "
-          + hTable.getClass().getName());
-    }
+    // We can do this directly in CDH4.
+    hTable.setAutoFlush(autoFlush);
   }
 
   /** {@inheritDoc} */
   @Override
   public void setWriteBufferSize(HTableInterface hTable, long bufSize)
       throws IOException {
-    // The HTable implementation of HTableInterface can do this; downcast if available.
-    // setWriteBufferSize is not a member of HTableInterface in HBase 0.92.X
-    if (hTable instanceof HTable) {
-      ((HTable) hTable).setWriteBufferSize(bufSize);
-    } else {
-      LOG.error("Cannot set writeBufSize=" + bufSize + " for HTableInterface impl "
-          + hTable.getClass().getName());
-    }
+    // We can do this directly in CDH4.
+    hTable.setWriteBufferSize(bufSize);
   }
 
   /** {@inheritDoc} */
@@ -83,10 +81,12 @@ public final class Hadoop1xHBase92SchemaBridge extends SchemaPlatformBridge {
       FileSystem fs, Path path, int blockSizeBytes, String compressionType)
       throws IOException {
 
-     return HFile.getWriterFactory(conf, new CacheConfig(conf)).createWriter(
-         fs, path, blockSizeBytes,
-         Compression.getCompressionAlgorithmByName(compressionType),
-         KeyValue.KEY_COMPARATOR);
+     return HFile.getWriterFactory(conf, new CacheConfig(conf))
+         .withPath(fs, path)
+         .withBlockSize(blockSizeBytes)
+         .withCompression(Compression.getCompressionAlgorithmByName(compressionType))
+         .withComparator(KeyValue.COMPARATOR)
+         .create();
   }
 
   /** {@inheritDoc} */
@@ -164,7 +164,7 @@ public final class Hadoop1xHBase92SchemaBridge extends SchemaPlatformBridge {
     /** {@inheritDoc} */
     @Override
     public HColumnDescriptorBuilderInterface setBloomType(String bloomType) {
-      mHColumnDescriptor.setBloomFilterType(StoreFile.BloomType.valueOf(bloomType));
+      mHColumnDescriptor.setBloomFilterType(BloomType.valueOf(bloomType));
       return this;
     }
 

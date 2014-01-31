@@ -25,11 +25,8 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.HColumnDescriptor;
-import org.apache.hadoop.hbase.KeyValue.KeyComparator;
 import org.apache.hadoop.hbase.client.HTableInterface;
-import org.apache.hadoop.hbase.io.hfile.Compression;
 import org.apache.hadoop.hbase.io.hfile.HFile;
-import org.apache.hadoop.hbase.regionserver.StoreFile;
 
 import org.kiji.annotations.ApiAudience;
 import org.kiji.delegation.Lookups;
@@ -83,16 +80,15 @@ public abstract class SchemaPlatformBridge {
    * @param fs the Filesystem to write to.
    * @param path to the file to open for write access.
    * @param blockSizeBytes the block size to write within the HFile.
-   * @param compressionType to use in the HFile
-   * @param comparator the Key comparator to use.
+   * @param compressionType to use in the HFile.
+   *     Should be one of "lzo", "gzip", "none", "snappy", or "lz4".
    * @return a newly-opened HFile writer object.
    * @throws IOException if there's an error opening the file.
    */
   public abstract HFile.Writer createHFileWriter(
       Configuration conf,
       FileSystem fs, Path path, int blockSizeBytes,
-      Compression.Algorithm compressionType,
-      KeyComparator comparator)
+      String compressionType)
       throws IOException;
 
   /**
@@ -126,10 +122,11 @@ public abstract class SchemaPlatformBridge {
      * Sets the compression type on the HColumnDescriptor.
      *
      * @param compressionAlgorithm to set the compression type to.
+     *      Should be one of 'none', 'gz', 'lz4', 'lzo', 'snappy'.
      * @return This builder with the compressionType set.
      */
     HColumnDescriptorBuilderInterface setCompressionType(
-        Compression.Algorithm compressionAlgorithm);
+        String compressionAlgorithm);
 
     /**
      * Sets the inMemory flag on the HColumnDescriptor.
@@ -159,9 +156,10 @@ public abstract class SchemaPlatformBridge {
      * Sets the bloom type used in the HColumnDescriptor.
      *
      * @param bloomType to set in the HColumnDescriptor.
+     *     Must be one of "NONE", "ROW", or "ROWCOL".
      * @return This builder with the bloomType set.
      */
-    HColumnDescriptorBuilderInterface setBloomType(StoreFile.BloomType bloomType);
+    HColumnDescriptorBuilderInterface setBloomType(String bloomType);
 
     /**
      * Returns the HColumnDescriptor.

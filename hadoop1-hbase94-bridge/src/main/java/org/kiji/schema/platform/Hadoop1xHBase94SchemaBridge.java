@@ -25,7 +25,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.HColumnDescriptor;
-import org.apache.hadoop.hbase.KeyValue.KeyComparator;
+import org.apache.hadoop.hbase.KeyValue;
 import org.apache.hadoop.hbase.client.HTableInterface;
 import org.apache.hadoop.hbase.io.hfile.CacheConfig;
 import org.apache.hadoop.hbase.io.hfile.Compression;
@@ -67,14 +67,14 @@ public final class Hadoop1xHBase94SchemaBridge extends SchemaPlatformBridge {
   /** {@inheritDoc} */
   @Override
   public HFile.Writer createHFileWriter(Configuration conf,
-      FileSystem fs, Path path, int blockSizeBytes, Compression.Algorithm compressionType,
-      KeyComparator comparator) throws IOException {
+      FileSystem fs, Path path, int blockSizeBytes, String compressionType)
+      throws IOException {
 
      return HFile.getWriterFactory(conf, new CacheConfig(conf))
          .withPath(fs, path)
          .withBlockSize(blockSizeBytes)
-         .withCompression(compressionType)
-         .withComparator(comparator)
+         .withCompression(Compression.getCompressionAlgorithmByName(compressionType))
+         .withComparator(KeyValue.KEY_COMPARATOR)
          .create();
   }
 
@@ -123,8 +123,9 @@ public final class Hadoop1xHBase94SchemaBridge extends SchemaPlatformBridge {
     /** {@inheritDoc} */
     @Override
     public HColumnDescriptorBuilderInterface setCompressionType(
-        Compression.Algorithm compressionAlgorithm) {
-      mHColumnDescriptor.setCompressionType(compressionAlgorithm);
+        String compressionAlgorithm) {
+      mHColumnDescriptor.setCompressionType(
+          Compression.getCompressionAlgorithmByName(compressionAlgorithm));
       return this;
     }
 
@@ -151,8 +152,8 @@ public final class Hadoop1xHBase94SchemaBridge extends SchemaPlatformBridge {
 
     /** {@inheritDoc} */
     @Override
-    public HColumnDescriptorBuilderInterface setBloomType(StoreFile.BloomType bloomType) {
-      mHColumnDescriptor.setBloomFilterType(bloomType);
+    public HColumnDescriptorBuilderInterface setBloomType(String bloomType) {
+      mHColumnDescriptor.setBloomFilterType(StoreFile.BloomType.valueOf(bloomType));
       return this;
     }
 
