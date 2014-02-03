@@ -28,7 +28,9 @@ import org.kiji.delegation.Priority;
  * Factory for CDH5-specific SchemaPlatformBridge implementation.
  *
  * <p>This is the only CDH5 bridge. Future CDH5 releases will
- * automatically fall back to this bridge.</p>
+ * automatically fall back to this bridge.
+ * 
+ * This is also the current bridge for Hadoop 2 and HBase 0.96.</p>
  */
 @ApiAudience.Private
 public final class CDH5MR1SchemaBridgeFactory extends SchemaPlatformBridgeFactory {
@@ -58,6 +60,10 @@ public final class CDH5MR1SchemaBridgeFactory extends SchemaPlatformBridgeFactor
       // This is our only bridge for CDH5; this is the
       // best platform bridge available.
       return Priority.HIGH;
+    } else if (hadoopVer.matches("2\\..*")
+        && hbaseVer.matches("0\\.96\\..*")) {
+      // This is our best bridge for HBase 0.96.
+      return Priority.LOW;
     } else {
       // Can't provide for this implementation.
       return Priority.DISABLED;
