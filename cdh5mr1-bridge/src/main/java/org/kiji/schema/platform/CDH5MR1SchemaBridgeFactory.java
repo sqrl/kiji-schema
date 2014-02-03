@@ -1,5 +1,5 @@
 /**
- * (c) Copyright 2012 WibiData, Inc.
+ * (c) Copyright 2014 WibiData, Inc.
  *
  * See the NOTICE file distributed with this work for additional
  * information regarding copyright ownership.
@@ -29,7 +29,7 @@ import org.kiji.delegation.Priority;
  *
  * <p>This is the only CDH5 bridge. Future CDH5 releases will
  * automatically fall back to this bridge.
- * 
+ *
  * This is also the current bridge for Hadoop 2 and HBase 0.96.</p>
  */
 @ApiAudience.Private
