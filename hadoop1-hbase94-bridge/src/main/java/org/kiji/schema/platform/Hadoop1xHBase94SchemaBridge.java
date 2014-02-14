@@ -27,6 +27,10 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.KeyValue;
 import org.apache.hadoop.hbase.client.HTableInterface;
+import org.apache.hadoop.hbase.filter.BinaryComparator;
+import org.apache.hadoop.hbase.filter.CompareFilter;
+import org.apache.hadoop.hbase.filter.FamilyFilter;
+import org.apache.hadoop.hbase.filter.QualifierFilter;
 import org.apache.hadoop.hbase.io.hfile.CacheConfig;
 import org.apache.hadoop.hbase.io.hfile.Compression;
 import org.apache.hadoop.hbase.io.hfile.HFile;
@@ -88,6 +92,18 @@ public final class Hadoop1xHBase94SchemaBridge extends SchemaPlatformBridge {
   @Override
   public HColumnDescriptorBuilderInterface createHColumnDescriptorBuilder(byte[] family) {
     return new HColumnDescriptorBuilder(family);
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public FamilyFilter createFamilyFilter(CompareFilter.CompareOp op, byte[] family) {
+    return new FamilyFilter(op, new BinaryComparator(family));
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public QualifierFilter createQualifierFilter(CompareFilter.CompareOp op, byte[] qualifier) {
+    return new QualifierFilter(op, new BinaryComparator(qualifier));
   }
 
   /**

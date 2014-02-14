@@ -51,6 +51,7 @@ import org.kiji.schema.hbase.HBaseScanOptions;
 import org.kiji.schema.layout.KijiTableLayout;
 import org.kiji.schema.layout.KijiTableLayout.LocalityGroupLayout.FamilyLayout;
 import org.kiji.schema.layout.impl.ColumnNameTranslator;
+import org.kiji.schema.platform.SchemaPlatformBridge;
 
 /**
  * Wraps a KijiDataRequest to expose methods that generate meaningful objects in HBase
@@ -328,18 +329,16 @@ public class HBaseDataRequestAdapter {
 
     // Only let cells from the locality-group (ie. HBase family) the column belongs to, ie:
     //     HBase-family = Kiji-locality-group
-    filter.addFilter(
-        new FamilyFilter(
-            CompareFilter.CompareOp.EQUAL,
-            new BinaryComparator(hbaseColumnName.getFamily())));
+    filter.addFilter(SchemaPlatformBridge.get().createFamilyFilter(
+        CompareFilter.CompareOp.EQUAL,
+        hbaseColumnName.getFamily()));
 
     if (kijiColumnName.isFullyQualified()) {
       // Only let cells from the fully-qualified column ie.:
       //     HBase-qualifier = Kiji-family:qualifier
-      filter.addFilter(
-          new QualifierFilter(
-              CompareFilter.CompareOp.EQUAL,
-              new BinaryComparator(hbaseColumnName.getQualifier())));
+      filter.addFilter(SchemaPlatformBridge.get().createQualifierFilter(
+          CompareFilter.CompareOp.EQUAL,
+          hbaseColumnName.getQualifier()));
     } else {
       // Only let cells from the map-type family ie.:
       //     HBase-qualifier starts with "Kiji-family:"

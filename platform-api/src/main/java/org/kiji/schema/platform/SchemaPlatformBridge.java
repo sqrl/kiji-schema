@@ -26,6 +26,9 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.client.HTableInterface;
+import org.apache.hadoop.hbase.filter.CompareFilter;
+import org.apache.hadoop.hbase.filter.FamilyFilter;
+import org.apache.hadoop.hbase.filter.QualifierFilter;
 import org.apache.hadoop.hbase.io.hfile.HFile;
 
 import org.kiji.annotations.ApiAudience;
@@ -105,6 +108,26 @@ public abstract class SchemaPlatformBridge {
    * @return a builder for an HColumnDescriptor.
    */
   public abstract HColumnDescriptorBuilderInterface createHColumnDescriptorBuilder(byte[] family);
+
+  /**
+   * Gets a FamilyFilter for this version of HBase.
+   *
+   * @param op The comparator operator to use.
+   * @param family The HBase family as bytes.
+   * @return A family filter.
+   */
+  public abstract FamilyFilter createFamilyFilter(CompareFilter.CompareOp op, byte[] family);
+
+  /**
+   * Gets a QualifierFilter for this version of HBase.
+   *
+   * @param op The comparator operator to use.
+   * @param qualifier The HBase qualifier as bytes.
+   * @return A qualifier filter
+   */
+  public abstract QualifierFilter createQualifierFilter(
+      CompareFilter.CompareOp op,
+      byte[] qualifier);
 
   /**
    * An interface for HColumnDescriptors, implemented by the bridges.
