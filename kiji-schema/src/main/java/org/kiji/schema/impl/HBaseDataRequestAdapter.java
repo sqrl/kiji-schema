@@ -26,15 +26,12 @@ import java.util.NavigableSet;
 import com.google.common.base.Preconditions;
 import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.Scan;
-import org.apache.hadoop.hbase.filter.BinaryComparator;
 import org.apache.hadoop.hbase.filter.ColumnPaginationFilter;
 import org.apache.hadoop.hbase.filter.ColumnPrefixFilter;
 import org.apache.hadoop.hbase.filter.CompareFilter;
-import org.apache.hadoop.hbase.filter.FamilyFilter;
 import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.hadoop.hbase.filter.FilterList;
 import org.apache.hadoop.hbase.filter.FirstKeyOnlyFilter;
-import org.apache.hadoop.hbase.filter.QualifierFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -101,7 +98,15 @@ public class HBaseDataRequestAdapter {
    * @throws IOException If there is an error.
    */
   public Scan toScan(KijiTableLayout tableLayout, HBaseScanOptions scanOptions) throws IOException {
-    final Scan scan = new Scan(toGet(HBaseEntityId.fromHBaseRowKey(new byte[0]), tableLayout));
+    // Unfortunately in HBase 95+, we can no longer create empty gets.
+    // So create a fake one for this table and fill in the fields of a new scan.
+    final Get tempGet = toGet(HBaseEntityId.fromHBaseRowKey(new byte[1]), tableLayout);
+    final Scan scan = new Scan();
+    scan.setFilter(tempGet.getFilter());
+    scan.setCacheBlocks(tempGet.getCacheBlocks());
+    scan.setMaxVersions(tempGet.getMaxVersions());
+    scan.setTimeRange(tempGet.getTimeRange().getMin(), tempGet.getTimeRange().getMax());
+    scan.setFamilyMap(tempGet.getFamilyMap());
     configureScan(scan, scanOptions);
     return scan;
   }
