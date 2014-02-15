@@ -115,6 +115,18 @@ public final class CDH41MR1SchemaBridge extends SchemaPlatformBridge {
     return new QualifierFilter(op, new BinaryComparator(qualifier));
   }
 
+  /** {@inheritDoc} */
+  @Override
+  public int compareBloom(HColumnDescriptor col1, HColumnDescriptor col2) {
+    return col1.getBloomFilterType().compareTo(col2.getBloomFilterType());
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public int compareCompression(HColumnDescriptor col1, HColumnDescriptor col2) {
+    return col1.getCompressionType().toString().compareTo(col2.getCompressionType().toString());
+  }
+
   /**
    * Platform-specific implementation of HColumnDescriptorBuilderInterface.
    */

@@ -130,6 +130,26 @@ public abstract class SchemaPlatformBridge {
       byte[] qualifier);
 
   /**
+   * Compares two column descriptors bloom type. Necessary due to different enum classpaths
+   * between versions.
+   *
+   * @param col1 The first column descriptor.
+   * @param col2 The second column descriptor.
+   * @return 0 if the bloom settings are the same. Non-zero otherwise.
+   */
+  public abstract int compareBloom(HColumnDescriptor col1, HColumnDescriptor col2);
+
+  /**
+   * Compares two column descriptors compression settings. This is necessary due to
+   * repackaging of compression related classes.
+   *
+   * @param col1 The first column descriptor.
+   * @param col2 The second column descriptor.
+   * @return 0 if the compression settings are the same. Non-zero otherwise.
+   */
+  public abstract int compareCompression(HColumnDescriptor col1, HColumnDescriptor col2);
+
+  /**
    * An interface for HColumnDescriptors, implemented by the bridges.
    */
   public interface HColumnDescriptorBuilderInterface {
