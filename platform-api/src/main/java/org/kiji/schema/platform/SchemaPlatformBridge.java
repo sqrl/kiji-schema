@@ -25,6 +25,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.HColumnDescriptor;
+import org.apache.hadoop.hbase.client.Delete;
 import org.apache.hadoop.hbase.client.HTableInterface;
 import org.apache.hadoop.hbase.filter.CompareFilter;
 import org.apache.hadoop.hbase.filter.FamilyFilter;
@@ -128,6 +129,16 @@ public abstract class SchemaPlatformBridge {
   public abstract QualifierFilter createQualifierFilter(
       CompareFilter.CompareOp op,
       byte[] qualifier);
+
+  /**
+   * Creates a Delete operation for an entire row up to a particular timestamp. Necessary due to
+   * the deprecation of row lock.
+   *
+   * @param rowKey The rowkey.
+   * @param timestamp The maximum timestamp to delete up to.
+   * @return A Delete operation.
+   */
+  public abstract Delete createDelete(byte[] rowKey, long timestamp);
 
   /**
    * Compares two column descriptors bloom type. Necessary due to different enum classpaths

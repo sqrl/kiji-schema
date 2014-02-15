@@ -26,6 +26,7 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.KeyValue;
+import org.apache.hadoop.hbase.client.Delete;
 import org.apache.hadoop.hbase.client.HTableInterface;
 import org.apache.hadoop.hbase.filter.BinaryComparator;
 import org.apache.hadoop.hbase.filter.CompareFilter;
@@ -115,6 +116,12 @@ public final class CDH5MR1SchemaBridge extends SchemaPlatformBridge {
   @Override
   public QualifierFilter createQualifierFilter(CompareFilter.CompareOp op, byte[] qualifier) {
     return new QualifierFilter(op, new BinaryComparator(qualifier));
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public Delete createDelete(byte[] rowKey, long timestamp) {
+    return new Delete(rowKey, timestamp);
   }
 
   /** {@inheritDoc} */
