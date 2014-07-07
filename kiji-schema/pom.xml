@@ -37,7 +37,7 @@
     <aspectj-maven-plugin.version>1.4</aspectj-maven-plugin.version>
     <aspectjrt.version>1.7.2</aspectjrt.version>
     <!-- Protocol library version must match the version Hadoop/HBase rely on. -->
-    <protobuf.version>2.4.0a</protobuf.version>
+    <protobuf.version>2.5.0</protobuf.version>
     <commons-pool.version>1.6</commons-pool.version>
   </properties>
 
@@ -326,11 +326,11 @@
   <profiles>
     <profile>
       <!--
-         Active by default: cdh4 build. Override with -Dplatform=hadoop1 to use
+         Active by default: cdh5 build. Override with -Dplatform=hadoop1 to use
          an Apache Hadoop 1.x-based platform.
       -->
 
-      <id>cdh4</id>
+      <id>cdh5</id>
       <activation>
         <property>
           <name>!platform</name>
@@ -342,39 +342,62 @@
         <!-- Marked as 'optional' to prevent propagation to transitive projects. -->
         <dependency>
           <groupId>org.apache.hadoop</groupId>
-          <artifactId>hadoop-core</artifactId>
+          <artifactId>hadoop-common</artifactId>
           <scope>compile</scope>
           <optional>true</optional>
-          <version>${cdh4-hadoop.version}</version>
+          <version>${cdh5-hadoop.version}</version>
         </dependency>
         <dependency>
           <groupId>org.apache.hadoop</groupId>
-          <artifactId>hadoop-client</artifactId>
+          <artifactId>hadoop-yarn-client</artifactId>
           <scope>compile</scope>
           <optional>true</optional>
-          <version>${cdh4-hadoop.version}</version>
+          <version>${cdh5-hadoop.version}</version>
         </dependency>
         <dependency>
           <groupId>org.apache.hadoop</groupId>
-          <artifactId>hadoop-minicluster</artifactId>
+          <artifactId>hadoop-yarn-server-tests</artifactId>
           <scope>test</scope>
           <optional>true</optional>
-          <version>${cdh4-hadoop.version}</version>
+          <version>${cdh5-hadoop.version}</version>
         </dependency>
         <dependency>
           <groupId>org.apache.hbase</groupId>
-          <artifactId>hbase</artifactId>
+          <artifactId>hbase-client</artifactId>
+          <scope>compile</scope>
+          <optional>true</optional>
+          <version>${cdh5-hbase.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.hbase</groupId>
+          <artifactId>hbase-server</artifactId>
+          <scope>compile</scope>
+          <optional>true</optional>
+          <version>${cdh5-hbase.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.hbase</groupId>
+          <artifactId>hbase-testing-util</artifactId>
           <type>test-jar</type>
           <scope>test</scope>
           <optional>true</optional>
-          <version>${cdh4-hbase.version}</version>
+          <version>${cdh5-hbase.version}</version>
         </dependency>
+        <!-- Exclude hbase and hadoop from fake-hbase to avoid path issues. -->
         <dependency>
-          <groupId>org.apache.hbase</groupId>
-          <artifactId>hbase</artifactId>
-          <scope>compile</scope>
-          <optional>true</optional>
-          <version>${cdh4-hbase.version}</version>
+          <groupId>org.kiji.testing</groupId>
+          <artifactId>fake-hbase</artifactId>
+          <version>${fake-hbase.version}</version>
+          <exclusions>
+            <exclusion>
+              <groupId>org.apache.hadoop</groupId>
+              <artifactId>hadoop-client</artifactId>
+            </exclusion>
+            <exclusion>
+              <groupId>org.apache.hbase</groupId>
+              <artifactId>hbase</artifactId>
+            </exclusion>
+          </exclusions>
         </dependency>
       </dependencies>
     </profile>
