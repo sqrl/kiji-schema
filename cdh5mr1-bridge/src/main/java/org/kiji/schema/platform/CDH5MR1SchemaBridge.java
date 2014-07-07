@@ -28,6 +28,7 @@ import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.KeyValue;
 import org.apache.hadoop.hbase.client.Delete;
 import org.apache.hadoop.hbase.client.HTableInterface;
+import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.filter.BinaryComparator;
 import org.apache.hadoop.hbase.filter.CompareFilter;
 import org.apache.hadoop.hbase.filter.FamilyFilter;
@@ -79,6 +80,12 @@ public final class CDH5MR1SchemaBridge extends SchemaPlatformBridge {
       throws IOException {
     // We can do this directly in CDH5.
     hTable.setWriteBufferSize(bufSize);
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public Put addKVToPut(Put put, KeyValue kv) throws IOException {
+    return put.add(kv);
   }
 
   /** {@inheritDoc} */
