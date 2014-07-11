@@ -38,8 +38,6 @@ import com.google.common.collect.Lists;
 import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.hadoop.hbase.filter.FilterList;
 import org.apache.hadoop.hbase.filter.PrefixFilter;
-import org.apache.hadoop.hbase.filter.RowFilter;
-import org.apache.hadoop.hbase.filter.WritableByteArrayComparable;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.junit.Test;
 
@@ -51,7 +49,6 @@ import org.kiji.schema.avro.HashType;
 import org.kiji.schema.avro.RowKeyComponent;
 import org.kiji.schema.avro.RowKeyEncoding;
 import org.kiji.schema.avro.RowKeyFormat2;
-import org.kiji.schema.platform.SchemaPlatformBridge;
 
 /** Tests the FormattedEntityIdRowFilter. */
 public class TestFormattedEntityIdRowFilter {

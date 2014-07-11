@@ -31,7 +31,6 @@ import org.apache.hadoop.hbase.client.HTableInterface;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.filter.CompareFilter;
 import org.apache.hadoop.hbase.filter.FamilyFilter;
-import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.hadoop.hbase.filter.QualifierFilter;
 import org.apache.hadoop.hbase.filter.RowFilter;
 import org.apache.hadoop.hbase.io.hfile.HFile;
@@ -141,7 +140,7 @@ public abstract class SchemaPlatformBridge {
    *
    * @param op The comparator operator to use.
    * @param qualifier The HBase qualifier as bytes.
-   * @return A qualifier filter
+   * @return A qualifier filter.
    */
   public abstract QualifierFilter createQualifierFilter(
       CompareFilter.CompareOp op,
@@ -153,7 +152,7 @@ public abstract class SchemaPlatformBridge {
    *
    * @param op The comparator operator to use.
    * @param regexString The regex to use for comparison, in string format.
-   * @return
+   * @return A qualifier filter.
    */
   public abstract QualifierFilter createQualifierFilterFromRegex(
       CompareFilter.CompareOp op,
@@ -175,7 +174,7 @@ public abstract class SchemaPlatformBridge {
    * Generates informative debug strings for a compare filter. Exists in the bridge because of
    * incompatible changes to WritableBytesComparable.
    *
-   * @param cfilter
+   * @param cfilter A compare filter.
    * @return A two element array. The first element will be a String representation
    *     of the compare operator. The second element will be a String representation
    *     of the value compared against.

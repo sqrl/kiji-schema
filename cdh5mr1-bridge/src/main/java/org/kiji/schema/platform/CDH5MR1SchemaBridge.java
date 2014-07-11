@@ -136,7 +136,10 @@ public final class CDH5MR1SchemaBridge extends SchemaPlatformBridge {
 
   /** {@inheritDoc} */
   @Override
-  public QualifierFilter createQualifierFilterFromRegex(CompareFilter.CompareOp op, String regexString) {
+  public QualifierFilter createQualifierFilterFromRegex(
+      CompareFilter.CompareOp op,
+      String regexString
+  ) {
     return new QualifierFilter(op, new RegexStringComparator(regexString));
   }
 
@@ -153,7 +156,7 @@ public final class CDH5MR1SchemaBridge extends SchemaPlatformBridge {
   public String[] debugStringsForCompareFilter(CompareFilter cfilter) {
     return new String[] {
         cfilter.getOperator().toString(),
-        Bytes.toStringBinary(cfilter.getComparator().getValue())
+        Bytes.toStringBinary(cfilter.getComparator().getValue()),
     };
   }
 
