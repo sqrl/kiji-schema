@@ -136,6 +136,12 @@ public final class CDH5MR1SchemaBridge extends SchemaPlatformBridge {
 
   /** {@inheritDoc} */
   @Override
+  public QualifierFilter createQualifierFilterFromRegex(CompareFilter.CompareOp op, String regexString) {
+    return new QualifierFilter(op, new RegexStringComparator(regexString));
+  }
+
+  /** {@inheritDoc} */
+  @Override
   public RowFilter createRowFilterFromRegex(CompareFilter.CompareOp op, String regexString) {
     final RegexStringComparator comparator = new RegexStringComparator(regexString);
     comparator.setCharset(Charsets.ISO_8859_1);

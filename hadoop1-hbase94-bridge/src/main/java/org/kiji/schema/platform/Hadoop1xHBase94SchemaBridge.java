@@ -40,6 +40,7 @@ import org.apache.hadoop.hbase.io.hfile.CacheConfig;
 import org.apache.hadoop.hbase.io.hfile.Compression;
 import org.apache.hadoop.hbase.io.hfile.HFile;
 import org.apache.hadoop.hbase.regionserver.StoreFile;
+import org.apache.hadoop.hbase.util.Bytes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -119,10 +120,25 @@ public final class Hadoop1xHBase94SchemaBridge extends SchemaPlatformBridge {
 
   /** {@inheritDoc} */
   @Override
+  public QualifierFilter createQualifierFilterFromRegex(CompareFilter.CompareOp op, String regexString) {
+    return new QualifierFilter(op, new RegexStringComparator(regexString));
+  }
+
+  /** {@inheritDoc} */
+  @Override
   public RowFilter createRowFilterFromRegex(CompareFilter.CompareOp op, String regexString) {
     final RegexStringComparator comparator = new RegexStringComparator(regexString);
     comparator.setCharset(Charsets.ISO_8859_1);
     return new RowFilter(op, comparator);
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public String[] debugStringsForCompareFilter(CompareFilter cfilter) {
+    return new String[] {
+        cfilter.getOperator().toString(),
+        Bytes.toStringBinary(cfilter.getComparator().getValue())
+    };
   }
 
   /** {@inheritDoc} */

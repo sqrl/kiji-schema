@@ -31,6 +31,7 @@ import org.apache.hadoop.hbase.client.HTableInterface;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.filter.CompareFilter;
 import org.apache.hadoop.hbase.filter.FamilyFilter;
+import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.hadoop.hbase.filter.QualifierFilter;
 import org.apache.hadoop.hbase.filter.RowFilter;
 import org.apache.hadoop.hbase.io.hfile.HFile;
@@ -147,8 +148,20 @@ public abstract class SchemaPlatformBridge {
       byte[] qualifier);
 
   /**
+   * Gets a regex-based QualifierFilter for this version of HBase. Exists in the bridge
+   * because of incompatible changes to RegexComparator.
+   *
+   * @param op The comparator operator to use.
+   * @param regexString The regex to use for comparison, in string format.
+   * @return
+   */
+  public abstract QualifierFilter createQualifierFilterFromRegex(
+      CompareFilter.CompareOp op,
+      String regexString);
+
+  /**
    * Gets a regex-based RowFilter for this version of HBase. Exists in the bridge because of
-   * incompatible changes to BinaryComparator.
+   * incompatible changes to RegexComparator.
    *
    * @param op The comparator operator to use.
    * @param regexString The regex to use for comparison, in string format.
