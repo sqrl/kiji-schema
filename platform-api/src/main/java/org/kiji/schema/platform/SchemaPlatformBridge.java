@@ -32,6 +32,7 @@ import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.filter.CompareFilter;
 import org.apache.hadoop.hbase.filter.FamilyFilter;
 import org.apache.hadoop.hbase.filter.QualifierFilter;
+import org.apache.hadoop.hbase.filter.RowFilter;
 import org.apache.hadoop.hbase.io.hfile.HFile;
 
 import org.kiji.annotations.ApiAudience;
@@ -144,6 +145,29 @@ public abstract class SchemaPlatformBridge {
   public abstract QualifierFilter createQualifierFilter(
       CompareFilter.CompareOp op,
       byte[] qualifier);
+
+  /**
+   * Gets a regex-based RowFilter for this version of HBase. Exists in the bridge because of
+   * incompatible changes to BinaryComparator.
+   *
+   * @param op The comparator operator to use.
+   * @param regexString The regex to use for comparison, in string format.
+   * @return A row filter.
+   */
+  public abstract RowFilter createRowFilterFromRegex(
+      CompareFilter.CompareOp op,
+      String regexString);
+
+  /**
+   * Generates informative debug strings for a compare filter. Exists in the bridge because of
+   * incompatible changes to WritableBytesComparable.
+   *
+   * @param cfilter
+   * @return A two element array. The first element will be a String representation
+   *     of the compare operator. The second element will be a String representation
+   *     of the value compared against.
+   */
+  public abstract String[] debugStringsForCompareFilter(CompareFilter cfilter);
 
   /**
    * Creates a Delete operation for an entire row up to a particular timestamp. Necessary due to

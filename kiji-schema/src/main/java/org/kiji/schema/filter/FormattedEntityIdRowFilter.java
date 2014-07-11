@@ -47,6 +47,7 @@ import org.kiji.schema.KijiDataRequest;
 import org.kiji.schema.KijiIOException;
 import org.kiji.schema.avro.RowKeyEncoding;
 import org.kiji.schema.avro.RowKeyFormat2;
+import org.kiji.schema.platform.SchemaPlatformBridge;
 import org.kiji.schema.util.FromJson;
 import org.kiji.schema.util.Hasher;
 import org.kiji.schema.util.ToJson;
@@ -277,13 +278,15 @@ public final class FormattedEntityIdRowFilter extends KijiRowFilter {
     }
     regex.append("$"); // $ matches the end of the string
 
-    final RegexStringComparator comparator = new RegexStringComparator(regex.toString());
-    comparator.setCharset(Charsets.ISO_8859_1);
+    final RowFilter regexRowFilter =
+        SchemaPlatformBridge.get().createRowFilterFromRegex(CompareOp.EQUAL, regex.toString());
+    // final RegexStringComparator comparator = new RegexStringComparator(regex.toString());
+    // comparator.setCharset(Charsets.ISO_8859_1);
     if (addPrefixFilter) {
-      return new FilterList(new PrefixFilter(prefixBytes.toByteArray()),
-          new RowFilter(CompareOp.EQUAL, comparator));
+      return new FilterList(new PrefixFilter(prefixBytes.toByteArray()), regexRowFilter);
     }
-    return new RowFilter(CompareOp.EQUAL, comparator);
+    return regexRowFilter;
+    //return new RowFilter(CompareOp.EQUAL, comparator);
   }
 
   /**
